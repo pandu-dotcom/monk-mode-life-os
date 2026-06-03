@@ -1,0 +1,28 @@
+.app-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.monk-card {
+  background: #161616;
+  border: 1px solid #252525;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.monk-title {
+  color: #d4af37;
+}
+
+.monk-grid {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .monk-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
