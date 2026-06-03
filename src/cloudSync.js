@@ -7,11 +7,11 @@ export async function loadCloudData(email) {
     .from("monkos_users")
     .select("*")
     .limit(1)
-.maybeSingle()
     .maybeSingle();
 
   if (error) throw error;
-
+console.log("Loaded data:", data);
+alert("Loaded data: " + JSON.stringify(data));
   if (!data) {
     throw new Error(
       "No cloud data found for email: " + cleanEmail
