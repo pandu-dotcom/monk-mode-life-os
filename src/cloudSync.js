@@ -17,11 +17,26 @@ export async function saveCloudData(email) {
     saved_money: Number(localStorage.getItem("savedMoney")) || 0,
   };
 
-  const { error } = await supabase
+  try {
+  const { data, error } = await supabase
     .from("monkos_users")
-    .upsert(data, { onConflict: "email" });
+    .select("*")
+    .eq("email", cleanEmail)
+    .limit(1)
+    .maybeSingle();
 
-  if (error) throw error;
+  alert("EMAIL=" + cleanEmail);
+
+  if (error) {
+    alert("ERROR=" + JSON.stringify(error));
+    throw error;
+  }
+
+  alert("DATA=" + JSON.stringify(data));
+
+} catch (err) {
+  alert("CATCH=" + err.message);
+  throw err;
 }
 
 export async function loadCloudData(email) {
