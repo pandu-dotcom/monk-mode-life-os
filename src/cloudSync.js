@@ -27,13 +27,9 @@ Number(localStorage.getItem("savedMoney")) || 0,
 
 const { data, error } = await supabase
   .from("monkos_users")
-  .select("*")
-  .eq("email", cleanEmail)
-  .limit(1)
-  .maybeSingle();
+  .select("*");
 
-if (error) throw error;
-}
+alert("DATA = " + JSON.stringify(data));
 
 export async function loadCloudData(email) {
 const cleanEmail = email.trim().toLowerCase();
@@ -46,11 +42,7 @@ const { data, error } = await supabase
 
 if (error) throw error;
 
-if (!data) {
-throw new Error(
-"No cloud data found for this email."
-);
-}
+
 
 localStorage.setItem(
 "tasks",
