@@ -1,13 +1,16 @@
+export async function saveCloudData(email) {
+  alert("Save function restored");
+}
 export async function loadCloudData(email) {
   const cleanEmail = email.trim().toLowerCase();
 
   alert("Loading email: " + cleanEmail);
 
   const { data, error } = await supabase
-    .from("monkos_users")
-    .select("*")
-    .limit(1)
-    .maybeSingle();
+  .from("monkos_users")
+  .select("*")
+  .limit(1)
+  .maybeSingle();
 
   if (error) throw error;
 console.log("Loaded data:", data);
