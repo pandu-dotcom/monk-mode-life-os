@@ -19,11 +19,10 @@ export async function saveCloudData(email) {
 
   try {
   const { data, error } = await supabase
-    .from("monkos_users")
-    .select("*")
-    .eq("email", cleanEmail)
-    .limit(1)
-    .maybeSingle();
+  .from("monkos_users")
+  .select("*")
+  .limit(1)
+  .maybeSingle();
 
   alert("EMAIL=" + cleanEmail);
 
