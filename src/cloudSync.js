@@ -33,11 +33,21 @@ export async function saveCloudData(email) {
 }
 
 export async function loadCloudData(email) {
-  const { data, error } = await supabase
-    .from("monkos_users")
-    .select("*")
-    .eq("email", email)
-    .maybeSingle()
+  const cleanEmail = email.trim().toLowerCase();
+
+const { data, error } = await supabase
+  .from("monkos_users")
+  .select("*")
+  .eq("email", cleanEmail)
+  .maybeSingle();
+
+if (error) throw error;
+
+if (!data) {
+  throw new Error(
+    "No cloud data found. Check that the same email was used for Save and Load."
+  );
+}
 
   if (error) throw error;
 
