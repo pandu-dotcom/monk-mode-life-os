@@ -33,7 +33,8 @@ export async function loadCloudData(email) {
     .eq("email", cleanEmail)
     .limit(1)
     .maybeSingle();
-
+alert("EMAIL=" + cleanEmail);
+alert("DATA=" + JSON.stringify(data));
   if (error) throw error;
 
   if (!data) {
