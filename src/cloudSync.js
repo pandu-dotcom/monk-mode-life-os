@@ -6,7 +6,8 @@ export async function loadCloudData(email) {
   const { data, error } = await supabase
     .from("monkos_users")
     .select("*")
-    .eq("email", cleanEmail)
+    .limit(1)
+.maybeSingle()
     .maybeSingle();
 
   if (error) throw error;
