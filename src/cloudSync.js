@@ -37,7 +37,7 @@ export async function loadCloudData(email) {
     .from("monkos_users")
     .select("*")
     .eq("email", email)
-    .single();
+    .maybeSingle()
 
   if (error) throw error;
 
