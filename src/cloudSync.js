@@ -25,11 +25,12 @@ saved_money:
 Number(localStorage.getItem("savedMoney")) || 0,
 };
 
-const { error } = await supabase
-.from("monkos_users")
-.upsert(data, {
-onConflict: "email",
-});
+const { data, error } = await supabase
+  .from("monkos_users")
+  .select("*")
+  .eq("email", cleanEmail)
+  .limit(1)
+  .maybeSingle();
 
 if (error) throw error;
 }
