@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 
 function Tasks() {
   const today = new Date().toDateString();
-
+console.log(
+  "TASKS IN STORAGE:",
+  localStorage.getItem("tasks")
+);
   const [tasks, setTasks] = useState(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [
       { name: "Exercise", points: 10, done: false },
