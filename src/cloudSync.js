@@ -20,18 +20,15 @@ export async function saveCloudData(email) {
 }
 
 export async function loadCloudData(email) {
-  const { data, error } = await supabase
-    .from("monkos_users")
-    .select("*")
-    .limit(1)
-    .single();
-
-  if (error) throw error;
+  alert("TEST VERSION RUNNING");
 
   localStorage.setItem(
     "tasks",
-    JSON.stringify(data.tasks || [])
+    JSON.stringify([
+      { name: "Cloud Test Success", done: false, points: 0 }
+    ])
   );
 
-  return data;
+  return true;
 }
+ 
