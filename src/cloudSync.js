@@ -20,20 +20,13 @@ export async function saveCloudData(email) {
 }
 
 export async function loadCloudData(email) {
-  const cleanEmail = email.trim().toLowerCase();
-
   const { data, error } = await supabase
     .from("monkos_users")
     .select("*")
-    .eq("email", cleanEmail)
     .limit(1)
-    .maybeSingle();
+    .single();
 
   if (error) throw error;
-
-  if (!data) {
-    throw new Error("No cloud data found for this email");
-  }
 
   localStorage.setItem(
     "tasks",
