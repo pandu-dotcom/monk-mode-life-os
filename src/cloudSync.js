@@ -34,7 +34,10 @@ export async function loadCloudData(email) {
     "tasks",
     JSON.stringify(data[0].tasks || [])
   );
-
+alert(
+  "Saved to localStorage: " +
+  JSON.stringify(data[0].tasks || [])
+);
   return data[0];
 }
 
