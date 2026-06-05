@@ -20,29 +20,15 @@ export async function saveCloudData(email) {
 }
 
 export async function loadCloudData(email) {
-  try {
-    const { data, error } = await supabase
-      .from("monkos_users")
-      .select("*")
-      .limit(1)
-      .single();
+  const { data, error } = await supabase
+    .from("monkos_users")
+    .select("*")
+    .limit(1);
 
-    alert("DATA = " + JSON.stringify(data));
-
-    if (error) {
-      alert("ERROR = " + JSON.stringify(error));
-      throw error;
-    }
-
-    localStorage.setItem(
-      "tasks",
-      JSON.stringify(data.tasks || [])
-    );
-
-    return data;
-  } catch (err) {
-    alert("CATCH = " + err.message);
-    throw err;
-  }
+  alert(JSON.stringify(data));
+  return;
 }
+    
+
+    
  
